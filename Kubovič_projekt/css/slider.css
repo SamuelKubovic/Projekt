@@ -1,0 +1,41 @@
+.slider {
+    margin: 10px;
+
+}
+
+.slider {
+    margin-top: 200px;
+    margin-bottom: 100px;
+}
+
+h5 {
+    color: black;
+    margin-top: 0;
+    height: 150px;
+    line-height: 500px;
+}
+
+.row {
+    display: flex;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    font-size: 2rem;
+    background-color: #111;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+    .row {
+        margin: 0;
+        padding: 0;
+    }
+}
