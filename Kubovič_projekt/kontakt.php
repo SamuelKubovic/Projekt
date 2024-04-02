@@ -104,30 +104,7 @@
 
 	</div>
 
-	<footer>
-		<div class="footerContainer">
-			<div class="socialIcons">
-				<a href="https://www.instagram.com/scuderiaferrari/" target="_blank"><i
-						class='bx bxl-instagram'></i></a>
-				<a href="https://www.facebook.com/ScuderiaFerrari/" target="_blank"><i
-						class='bx bxl-facebook-circle'></i></a>
-				<a href="https://www.youtube.com/@Ferrari" target="_blank"><i class='bx bxl-youtube'></i></a>
-				<a href="https://twitter.com/ScuderiaFerrari" target="_blank"><i class='bx bxl-twitter'></i></a>
-			</div>
-			<div class="footerNav">
-				<ul>
-					<li><a href="index.html">Domov</a></li>
-					<li><a href="FAQ.html">FAQ</a></li>
-					<li><a href="kontakt.html">Kontakt</a></li>
-					<li><a href="galéria.html">Galéria</a></li>
-				</ul>
-			</div>
-
-		</div>
-		<div class="footerBottom">
-			<p>Copyright &copy;2023, Designed by <span class="designer">Kubovič Samuel</span></p>
-		</div>
-	</footer>
+	<?php include "./parts/footer.php"?>
 
 
 	<script src="js/app.js" defer></script>
