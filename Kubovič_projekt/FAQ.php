@@ -139,6 +139,7 @@
 
     <script src="js/app.js"></script>
   </main>
+
   
   <?php include "./parts/footer.php"?>
 

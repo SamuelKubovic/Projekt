@@ -1,5 +1,10 @@
+<?php
+    session_start();
+?>
+
+
 <header class="header ">
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
       <img src="img/ferrarilogo.png" class="ferrarilogo" alt="">
     </a>
 
@@ -8,6 +13,16 @@
       <a href="FAQ.php ">FAQ</a>
       <a href="kontakt.php">Kontakt</a>
       <a href="galéria.php">Galéria</a>
+        <?php
+        if (isset($_SESSION['useruid'])) {
+            echo '<a href="includes/logout.inc.php">Logout</a>';
+        }
+        else{
+            echo "<a href='signup.php'>Sign up</a>";
+            echo "<a href='login.php'>Login</a>";
+        }
+        ?>
+
     </nav>
 
     <div class="social-media">

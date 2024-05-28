@@ -44,6 +44,7 @@
   <!--Main-->
   <main>
     <section class="home">
+
       <div class="home-content">
         <h1>SCUDERIA FERRARI</h1>
         <h3>"Beyond Imagination"</h3>
@@ -192,7 +193,6 @@
 
   <!--footer-->
   <?php include "./parts/footer.php"?>
-  
 
 
   <script src="js/app.js" defer></script>
