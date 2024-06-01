@@ -1,6 +1,4 @@
-<?php
-    session_start();
-?>
+
 
 
 <header class="header ">
@@ -13,16 +11,23 @@
       <a href="FAQ.php ">FAQ</a>
       <a href="kontakt.php">Kontakt</a>
       <a href="galéria.php">Galéria</a>
-        <?php
-        if (isset($_SESSION['useruid'])) {
-            echo '<a href="includes/logout.inc.php">Logout</a>';
-        }
-        else{
-            echo "<a href='signup.php'>Sign up</a>";
-            echo "<a href='login.php'>Login</a>";
-        }
-        ?>
-
+    <?php
+      if(isset($_SESSION["userid"]))
+      {
+    ?>      
+      <a href='includes/logout.inc.php'>Logout</a>
+      <a href=#><?php echo $_SESSION["useruid"]; ?></a>
+    <?php
+      }
+      else
+      { 
+    ?>
+      <a href='signup.php'>Signup</a>
+      <a href=login.php>Login</a>
+    <?php
+      }
+    ?>  
+ 
     </nav>
 
     <div class="social-media">

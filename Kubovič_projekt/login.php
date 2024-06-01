@@ -26,15 +26,5 @@
 
         <button type="submit" name="submit">Log In</button>
     </form>
-    <?php
-    if (isset($_GET['error'])) {
-        if ($_GET['error'] == "emptyinput") {
-            echo "<p>Vyplňte všetky polia</p>";
-        }
-        else if ($_GET['error'] == "wronglogin") {
-            echo "<p>Nesprávne prihlasovacie údaje</p>";
-        }
-    }
-    ?>
 </section>
 

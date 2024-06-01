@@ -1,3 +1,8 @@
+<?php
+    session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,8 +93,7 @@
       </div>
     </section>
     <br><br>
-
-
+    
 
     <div class="row">
       <div class="col-sm-12 col-md-6 pb-0 mb-0">

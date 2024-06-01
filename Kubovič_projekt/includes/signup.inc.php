@@ -1,41 +1,21 @@
 <?php
 
-if (isset($_POST["submit"])){
+if (isset($_POST["submit"]))
+{
+$uid = $_POST["uid"];
+$pwd = $_POST["pwd"];
+$pwdRepeat = $_POST["pwdrepeat"];
+$email = $_POST["email"];
 
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $username = $_POST["uid"];
-    $pwd = $_POST["pwd"];
-    $pwdRepeat = $_POST["pwdrepeat"];
+include "../classes/dbh.classes.php";
+include "../classes/signup.classes.php";
+include "../classes/signup-contr.classes.php";
+$signup = new SignupContr($uid, $pwd, $pwdRepeat,$email);
 
-    require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
 
-    if (emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false) {
-        header("location:../signup.php?error=emptyinput");
-        exit();
-    }
-    if (invalidUid($username) !== false) {
-        header("location:../signup.php?error=invaliduid");
-        exit();
-    }
-    if (invalidEmail($email) !== false) {
-        header("location:../signup.php?error=invalidemail");
-        exit();
-    }
-    if (pwdMatch($pwd, $pwdRepeat) !== false) {
-        header("location:../signup.php?error=incorrectpwd");
-        exit();
-    }
-    if (uidExists($conn, $username, $email) !== false) {
-        header("location:../signup.php?error=usernametaken");
-        exit();
-    }
+$signup->signupUser();
 
-    createUser($conn, $name, $email, $username, $pwd);
+header("location: ../index.php?error=none");
 
-}
-else{
-    header("location:../signup.php");
-    exit();
+
 }
