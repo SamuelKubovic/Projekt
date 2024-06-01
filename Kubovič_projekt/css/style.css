@@ -176,14 +176,8 @@ body{
 /*footer*/
 
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+
+
 
 .footerContainer {
     width: 100%;
@@ -296,3 +290,4 @@ footer {
     border-radius: 8px;
     cursor: pointer;
 }
+

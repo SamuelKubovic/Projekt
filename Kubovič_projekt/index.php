@@ -2,7 +2,6 @@
     session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,6 +43,7 @@
 
   <!--Header s navbarom-->
   <?php include "./parts/header.php"?>
+  <?php include "./parts/footer.php"?>
   
 
   <!--Main-->
@@ -195,11 +195,12 @@
 
   </main>
 
-  <!--footer-->
-  <?php include "./parts/footer.php"?>
+  
 
 
   <script src="js/app.js" defer></script>
+
+  
 </body>
 
 </html>
