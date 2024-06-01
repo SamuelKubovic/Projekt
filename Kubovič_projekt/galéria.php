@@ -19,44 +19,42 @@
 <?php include "./parts/header.php"?>
 
     <main>
-        <div class="row">
-            <div class="column">
-                <img src="img/slider 1.webp">
-                <img src="img/slider 2.webp">
-                <img src="img/kontakt.jpg">
-                <img src="img/ferrari sf23.jpg">
-                <img src="img/ferrari.jpg">
-                <img src="img/background.webp">
+    <form action="view.php" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="image"/>
+        <input type="submit" name="submit" value="UPLOAD"/>
+    </form>
+        
 
-            </div>
-            <div class="column">
-                <img src="img/column 15.jpg">
-                <img src="img/column 16.webp">
-                <img src="img/column 17.jpg">
-                <img src="img/column 18.jpg">
-                <img src="img/column 19.avif">
-                <img src="img/column 20.JPG">
-            </div>
-            <div class="column">
-                <img src="img/column 1.jpg">
-                <img src="img/column 2.jpeg">
-                <img src="img/column 3.jpg">
-                <img src="img/column 4.webp">
-                <img src="img/column 5.jpg">
-                <img src="img/column 6.jpg">
 
-            </div>
-            <div class="column">
-                <img src="img/column 8.jpg">
-                <img src="img/column 9.jpg">
-                <img src="img/column 11.avif">
-                <img src="img/column 12.jpg">
-                <img src="img/column 13.webp">
-                <img src="img/column 14.webp">
-            </div>
-        </div>
-        <script src="js/app.js" defer></script>
+
+        <?php
+  if(!empty($_GET['id'])){
+    
+     $dbHost     = 'localhost';
+     $dbUsername = 'root';
+     $dbPassword = '';
+     $dbName     = 'ooplogin';
+
+     $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+     if($db->connect_error){
+        die("Connection failed: " . $db->connect_error);
+     }
+     $result = $db->query("SELECT image FROM images WHERE id = {$_GET['id']}");
+     if($result->num_rows > 0){
+        $imgData = $result->fetch_assoc();
+        header("Content-type: image/jpg"); 
+        echo $imgData['image']; 
+    }else{
+        echo 'Image not found...';
+    }
+   }
+  ?>
+
+  <script src="js/app.js" defer></script>
     </main>
+    
 
 
 
