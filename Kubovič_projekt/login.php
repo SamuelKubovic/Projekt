@@ -16,7 +16,7 @@
 </head>
 
 <?php include "./parts/header.php"?>
-<?php include "./parts/footer.php"?>
+
 
 <section class="signup-form">
     <h2>Login</h2>
@@ -28,3 +28,4 @@
     </form>
 </section>
 
+<?php include "./parts/footer.php"?>

@@ -19,38 +19,52 @@
 <?php include "./parts/header.php"?>
 
     <main>
-    <form action="view.php" method="post" enctype="multipart/form-data">
-        Select image to upload:
-        <input type="file" name="image"/>
-        <input type="submit" name="submit" value="UPLOAD"/>
+    <div class="container">
+        <div class="row">
+            <?php
+            $host = 'localhost';
+            $dbname = 'ooplogin';
+            $username = 'root';
+            $password = '';
+
+            try {
+                $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                $stmt = $pdo->query("SELECT image FROM images");
+
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $imageData = base64_encode($row['image']);
+                    $src = 'data:image/jpeg;base64,' . $imageData;
+
+                    echo '<img src="' . $src . '" style="max-width: 300px; margin: 10px;" />';
+                }
+            } catch (PDOException $e) {
+                die("Error: " . $e->getMessage());
+            }
+            ?>
+        </div>
+
+        
+        <?php { ?>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h2 class="mb-4">Upload Image</h2>
+                    <form method="post" action="view.php" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="image" class="form-label">Select Image (JPG only)</label>
+                    <input type="file" class="form-control" id="image" name="image" accept="image/jpeg" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload Image</button>
+            </form>
+                </div>
+            </div>
+        <?php } 
+        ?>
+    </div>
     </form>
         
-
-
-
-        <?php
-  if(!empty($_GET['id'])){
-    
-     $dbHost     = 'localhost';
-     $dbUsername = 'root';
-     $dbPassword = '';
-     $dbName     = 'ooplogin';
-
-     $db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-     if($db->connect_error){
-        die("Connection failed: " . $db->connect_error);
-     }
-     $result = $db->query("SELECT image FROM images WHERE id = {$_GET['id']}");
-     if($result->num_rows > 0){
-        $imgData = $result->fetch_assoc();
-        header("Content-type: image/jpg"); 
-        echo $imgData['image']; 
-    }else{
-        echo 'Image not found...';
-    }
-   }
-  ?>
+ 
 
   <script src="js/app.js" defer></script>
     </main>
