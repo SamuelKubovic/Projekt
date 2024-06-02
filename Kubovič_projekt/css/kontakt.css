@@ -343,8 +343,13 @@ textarea::-webkit-scrollbar-thumb {
 
 /*footer*/
 footer {
-	background-color: #222;
-	
+    position: relative; 
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    padding: 0;
+    text-align: center;
+    background-color: #222; 
 }
 
 .footerContainer {
