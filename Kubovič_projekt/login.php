@@ -1,3 +1,4 @@
+
 <head>
 
     <head>
@@ -26,6 +27,21 @@
 
         <button type="submit" name="submit">Log In</button>
     </form>
+    <div class="phpkod">
+            <?php
+            if(isset($_GET["error"])){
+                if($_GET["error"] == "emptyinput"){
+                    echo "<p>Vyplňte všetky polia!</p>";
+                }
+                else if($_GET["error"] == "wrongpwd"){
+                    echo "<p>Zadali ste nesprávne heslo!</p>";
+                }
+                else if($_GET["error"] == "usernotfound"){
+                    echo "<p>Zadali ste nesprávny Username!</p>";
+                }
+            }
+            ?>
+        </div>
 </section>
 
 <?php include "./parts/footer.php"?>

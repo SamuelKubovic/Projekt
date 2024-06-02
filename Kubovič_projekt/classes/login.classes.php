@@ -14,7 +14,7 @@ class Login extends Dbh {
         if($stmt->rowCount() == 0)
     {
         $stmt = null;
-        header("location: ../index.php?error=usernotfound");
+        header("location: ../login.php?error=usernotfound");
         exit();
     }
 
@@ -25,7 +25,7 @@ class Login extends Dbh {
         if($checkPwd == false)
     {
         $stmt = null;
-        header("location: ../index.php?error=wrongpwd");
+        header("location: ../login.php?error=wrongpwd");
         exit();
     }
     elseif($checkPwd == true){
@@ -40,7 +40,7 @@ class Login extends Dbh {
         if($stmt->rowCount() == 0)
         {
             $stmt = null;
-            header("location: ../index.php?error=stmtfailed");
+            header("location: ../login.php?error=stmtfailed");
             exit();
         }
 

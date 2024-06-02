@@ -30,9 +30,32 @@
             <input type="password" name="pwd" placeholder="Heslo...">
             <input type="password" name="pwdrepeat" placeholder="Zopakujte heslo...">
             <button type="submit" name="submit">Sign Up</button>
+
+            <div class="phpkod">
+            <?php
+            if(isset($_GET["error"])){
+                if($_GET["error"] == "emptyinput"){
+                    echo "<p>Vyplňte všetky polia!</p>";
+                }
+                else if($_GET["error"] == "username"){
+                    echo "<p>Vyber správny username!</p>";
+                }
+                else if($_GET["error"] == "usertaken"){
+                    echo "<p>Username už existuje!</p>";
+                }
+                else if($_GET["error"] == "pwdmatch"){
+                    echo "<p>Heslá sa nezhodujú!</p>";
+                }
+                else if($_GET["error"] == "email"){
+                    echo "<p>Napíš správnu formu emailu!</p>";
+                }
+            }
+            ?>
+        </div>
         </form>
     </section>
 
+    
 
 
 
