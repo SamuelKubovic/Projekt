@@ -26,62 +26,44 @@
     <?php include "./parts/header.php"?>
 
     <main>
+        <?php
+    require_once 'view.php';  
+
+    $host = 'localhost';
+    $dbname = 'ooplogin';
+    $username = 'root';
+    $password = '';
+
+    $imageUploader = new ImageUploader($host, $dbname, $username, $password);
+?>
         <div class="container">
-            <div class="row">
-                <?php
-            $host = 'localhost';
-            $dbname = 'ooplogin';
-            $username = 'root';
-            $password = '';
+            <h1 class="mt-4 mb-4">Image Gallery</h1>
+            <?php $imageUploader->displayImages(); ?>
+        </div>
 
-            try {
-                $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                $stmt = $pdo->query("SELECT image FROM images");
-
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $imageData = base64_encode($row['image']);
-                    $src = 'data:image/jpeg;base64,' . $imageData;
-                    echo '<img src="' . $src . '" style="max-width: 300px; margin: 10px;" />';
-                }
-            } catch (PDOException $e) {
-                die("Error: " . $e->getMessage());
-            }
-            ?>
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-6">
+                <h2 class="mb-4">Nahraj obrázok</h2>
+                <form method="post" action="view.php" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Výber obrázok</label>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/jpeg" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Nahraj obrázok</button>
+                </form>
             </div>
-
-
-
-            <div class="row mt-4 justify-content-center">
-                <div class="col-md-6">
-                    <h2 class="mb-4">Upload Image</h2>
-                    <form method="post" action="view.php" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Select Image (JPG only)</label>
-                            <input type="file" class="form-control" id="image" name="image" accept="image/jpeg"
-                                required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Upload Image</button>
-                    </form>
-                </div>
-            </div>
+        </div>
         </div>
         <br>
         </form>
 
-        
+
 
         <script src="js/app.js" defer></script>
     </main>
 
-
-
-
     <?php include "./parts/footer.php"?>
 
-
-    
 </body>
 
 </html>
