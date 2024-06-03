@@ -1,12 +1,11 @@
 <?php
-require_once 'view.php';  
+require_once 'view.php';
+require_once 'classes/dbh.classes.php';
 
-$host = 'localhost';
-$dbname = 'ooplogin';
-$username = 'root';
-$password = '';
+$db = new Dbh();
+$conn = $db->connect();
 
-$imageUploader = new ImageUploader($host, $dbname, $username, $password);
+$imageUploader = new ImageUploader($conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = $_POST['id'];
