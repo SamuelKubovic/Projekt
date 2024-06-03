@@ -27,15 +27,15 @@
 
     <main>
         <?php
-    require_once 'view.php';  
+    require_once 'view.php';
+    require_once 'classes/dbh.classes.php';
 
-    $host = 'localhost';
-    $dbname = 'ooplogin';
-    $username = 'root';
-    $password = '';
+    $db = new Dbh();
+    $conn = $db->connect();
 
-    $imageUploader = new ImageUploader($host, $dbname, $username, $password);
-?>
+    $imageUploader = new ImageUploader($conn);
+    ?>
+
         <div class="container">
             <h1 class="mt-4 mb-4">Image Gallery</h1>
             <?php $imageUploader->displayImages(); ?>
@@ -53,11 +53,8 @@
                 </form>
             </div>
         </div>
-        </div>
+
         <br>
-        </form>
-
-
 
         <script src="js/app.js" defer></script>
     </main>
