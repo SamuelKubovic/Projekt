@@ -61,14 +61,17 @@ class ImageUploader {
             echo '<div class="col-md-4 mb-4">';
             echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" class="img-fluid" alt="Image">';
             echo '<form method="post" action="delete.php" class="mt-2">';
+            if(isset($_SESSION['userid'])) {
             echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
             echo '<button type="submit" class="btn btn-danger">Delete</button>';
             echo '</form>';
             echo '<form method="get" action="edit.php" class="mt-2">';
             echo '<input type="hidden" name="id" value="' . $row['id'] . '">';
             echo '<button type="submit" class="btn btn-primary">Edit</button>';
+            }
             echo '</form>';
             echo '</div>';
+            
         }
         echo '</div>';
     } catch (PDOException $e) {

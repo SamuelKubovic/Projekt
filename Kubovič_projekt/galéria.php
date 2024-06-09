@@ -41,7 +41,10 @@
             <?php $imageUploader->displayImages(); ?>
         </div>
 
-        <div class="row mt-4 justify-content-center">
+        <?php 
+            if(isset($_SESSION['userid'])){
+                ?>
+                <div class="row mt-4 justify-content-center">
             <div class="col-md-6">
                 <h2 class="mb-4">Nahraj obrázok</h2>
                 <form method="post" action="view.php" enctype="multipart/form-data">
@@ -53,6 +56,10 @@
                 </form>
             </div>
         </div>
+            <?php }?>
+        
+
+        
 
         <br>
 
